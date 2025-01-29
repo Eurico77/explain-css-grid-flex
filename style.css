@@ -1,0 +1,61 @@
+/* Estilos Gerais */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.brinquedo {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* ========== FLEXBOX ========== */
+.caixa-flex {
+  display: flex;
+  gap: 10px;
+  border: 3px dashed #4ecdc4;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+/* Exemplo 1: justify-content */
+.justify-center {
+  justify-content: center; /* 🎯 Brinquedos no meio horizontal */
+}
+
+/* Exemplo 2: align-items */
+.align-center {
+  height: 150px;
+  align-items: center; /* 🎯 Brinquedos no meio vertical */
+}
+
+/* ========== CSS GRID ========== */
+.prateleira-grid {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  gap: 10px;
+  border: 3px solid #ff9f43;
+  padding: 15px;
+  margin: 20px 0;
+  height: 200px;
+}
+
+/* Exemplo 3: justify-content + align-content */
+.content-center {
+  justify-content: center; /* 🎯 Prateleira no meio horizontal */
+  align-content: center; /* 🎯 Prateleira no meio vertical */
+}
+
+/* Exemplo 4: justify-items + align-items */
+.items-end {
+  justify-items: end; /* 🎯 Brinquedos à direita das divisórias */
+  align-items: end; /* 🎯 Brinquedos na base das divisórias */
+}
+
+/* Exemplo 5: justify-self */
+.self-center {
+  justify-self: center; /* 🎯 Este brinquedo desobedece a regra! */
+}
