@@ -1,61 +1,77 @@
-/* Estilos Gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
-.brinquedo {
-  background-color: #ff6b6b;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
+h1 {
   text-align: center;
+  margin-bottom: 30px;
+  font-size: 4.5rem;
 }
 
-/* ========== FLEXBOX ========== */
-.caixa-flex {
-  display: flex;
-  gap: 10px;
-  border: 3px dashed #4ecdc4;
-  padding: 15px;
-  margin: 20px 0;
+p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 1.5rem;
+
+  color: #2c3e50;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px;
+  border-left: 4px solid #27ae60;
 }
 
-/* Exemplo 1: justify-content */
-.justify-center {
-  justify-content: center; /* 🎯 Brinquedos no meio horizontal */
+p strong {
+  color: #2c3e50;
 }
 
-/* Exemplo 2: align-items */
-.align-center {
-  height: 150px;
-  align-items: center; /* 🎯 Brinquedos no meio vertical */
+p a {
+  text-decoration: none;
+  color: #2c3e50;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* ========== CSS GRID ========== */
-.prateleira-grid {
-  display: grid;
-  grid-template-columns: 100px 100px;
-  gap: 10px;
-  border: 3px solid #ff9f43;
-  padding: 15px;
-  margin: 20px 0;
-  height: 200px;
+nav {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  color: #2c3e50;
 }
 
-/* Exemplo 3: justify-content + align-content */
-.content-center {
-  justify-content: center; /* 🎯 Prateleira no meio horizontal */
-  align-content: center; /* 🎯 Prateleira no meio vertical */
+nav ul {
+  list-style: none;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Exemplo 4: justify-items + align-items */
-.items-end {
-  justify-items: end; /* 🎯 Brinquedos à direita das divisórias */
-  align-items: end; /* 🎯 Brinquedos na base das divisórias */
+nav li {
+  display: inline-block;
+  margin-right: 10px;
 }
 
-/* Exemplo 5: justify-self */
-.self-center {
-  justify-self: center; /* 🎯 Este brinquedo desobedece a regra! */
+nav a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
