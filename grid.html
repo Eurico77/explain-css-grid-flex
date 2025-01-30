@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Grid Master - Guia Completo</title>
+    <style>
+      :root {
+        --cor-primaria: #2c3e50;
+        --cor-secundaria: #27ae60;
+        --cor-destaque: #e74c3c;
+        --fundo-claro: #f8f9fa;
+        --sombra: 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      .secao {
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--sombra);
+        padding: 25px;
+        margin: 30px 0;
+        border-left: 4px solid var(--cor-secundaria);
+      }
+
+      .container {
+        border: 2px dashed var(--cor-primaria);
+        background: var(--fundo-claro);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        min-height: 300px;
+        display: grid;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .item {
+        background: linear-gradient(145deg, var(--cor-secundaria), #219a52);
+        color: white;
+        padding: 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        box-shadow: var(--sombra);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .controles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin: 25px 0;
+      }
+
+      button {
+        background: var(--cor-primaria);
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--sombra);
+      }
+
+      .descricao {
+        background: var(--fundo-claro);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .guia-final {
+        background: linear-gradient(to right, var(--fundo-claro), white);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 50px;
+        border: 2px solid var(--cor-secundaria);
+      }
+
+      .dica {
+        background: #e8f4fc;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      .grid-area-exemplo {
+        grid-template-areas:
+          'header header'
+          'sidebar main'
+          'footer footer';
+      }
+
+      .area {
+        background: #2980b9 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="grid.html">Grid</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>CSS Grid Master - Guia Completo</h1>
+    <p>Domine o CSS Grid com exemplos interativos</p>
+
+    <!-- Exemplo 1: grid-template-columns -->
+    <div class="secao">
+      <h2>1. grid-template-columns 📐</h2>
+      <div class="dica">
+        Define as colunas do grid. Valores podem ser:
+        <ul>
+          <li>Unidades fixas (px)</li>
+          <li>Unidades flexíveis (fr)</li>
+          <li>Funções (minmax(), repeat())</li>
+        </ul>
+      </div>
+
+      <div class="container" id="ex1">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+      </div>
+
+      <div class="controles">
+        <button
+          onclick="aplicaEstiloGrid('ex1', 'gridTemplateColumns', '1fr 1fr', 'Duas colunas flexíveis')"
+        >
+          1fr 1fr
+        </button>
+        <button
+          onclick="aplicaEstiloGrid('ex1', 'gridTemplateColumns', '100px 200px 1fr', 'Mistura de unidades')"
+        >
+          100px 200px 1fr
+        </button>
+        <button
+          onclick="aplicaEstiloGrid('ex1', 'gridTemplateColumns', 'repeat(3, minmax(100px, 1fr))', 'Colunas responsivas')"
+        >
+          repeat(3, minmax(100px, 1fr))
+        </button>
+      </div>
+
+      <div id="desc-ex1" class="descricao">
+        Clique nos botões para ver diferentes configurações de colunas
+      </div>
+    </div>
+
+    <!-- Exemplo 2: grid-template-areas -->
+    <div class="secao">
+      <h2>2. grid-template-areas 🗺️</h2>
+      <div class="dica">Cria layouts complexos usando nomes de áreas</div>
+
+      <div class="container grid-area-exemplo" id="ex2">
+        <div class="item area" style="grid-area: header">Header</div>
+        <div class="item area" style="grid-area: sidebar">Sidebar</div>
+        <div class="item area" style="grid-area: main">Main</div>
+        <div class="item area" style="grid-area: footer">Footer</div>
+      </div>
+
+      <div class="controles">
+        <button
+          onclick="aplicaEstiloGrid('ex2', 'gridTemplateAreas', `'header header' 'sidebar main' 'footer footer'`, 'Layout tradicional')"
+        >
+          Layout Clássico
+        </button>
+        <button
+          onclick="aplicaEstiloGrid('ex2', 'gridTemplateAreas', `'sidebar main' 'sidebar footer' 'header header'`, 'Layout Alternativo')"
+        >
+          Layout Alternativo
+        </button>
+      </div>
+
+      <div id="desc-ex2" class="descricao">
+        Experimente diferentes disposições de áreas
+      </div>
+    </div>
+
+    <!-- Exemplo 3: Alinhamento -->
+    <div class="secao">
+      <h2>3. Alinhamento 🧭</h2>
+      <div class="dica">
+        Controle de alinhamento nos eixos principal e cruzado
+      </div>
+
+      <div
+        class="container"
+        id="ex3"
+        style="height: 300px; grid-template-columns: 1fr 1fr"
+      >
+        <div class="item" style="height: 60px">1</div>
+        <div class="item" style="height: 100px">2</div>
+        <div class="item" style="height: 80px">3</div>
+      </div>
+
+      <div class="controles">
+        <button
+          onclick="aplicaEstiloGrid('ex3', 'justifyContent', 'start', 'Alinhar à esquerda')"
+        >
+          justify-content: start
+        </button>
+        <button
+          onclick="aplicaEstiloGrid('ex3', 'alignContent', 'center', 'Centralizar verticalmente')"
+        >
+          align-content: center
+        </button>
+        <button
+          onclick="aplicaEstiloGrid('ex3', 'justifyItems', 'end', 'Alinhar itens à direita')"
+        >
+          justify-items: end
+        </button>
+      </div>
+
+      <div id="desc-ex3" class="descricao">
+        Teste diferentes combinações de alinhamento
+      </div>
+    </div>
+
+    <!-- Guia Final -->
+    <div class="guia-final">
+      <h2>📘 CSS Grid para Iniciantes</h2>
+
+      <div class="dica">
+        <strong>Conceitos Fundamentais:</strong>
+        <ul>
+          <li>
+            <strong>Grid Container:</strong> Elemento pai com display: grid
+          </li>
+          <li><strong>Grid Item:</strong> Elementos filhos diretos</li>
+          <li><strong>Track:</strong> Linhas (rows) ou colunas (columns)</li>
+          <li><strong>Gap:</strong> Espaço entre células (grid-gap)</li>
+        </ul>
+      </div>
+
+      <h3>🛠️ Quando usar Grid vs Flexbox</h3>
+      <div class="dica">
+        <table>
+          <tr>
+            <th>Situação</th>
+            <th>Melhor Escolha</th>
+            <th>Exemplo</th>
+          </tr>
+          <tr>
+            <td>Layouts bidimensionais</td>
+            <td>Grid</td>
+            <td>Páginas complexas com header, sidebar e footer</td>
+          </tr>
+          <tr>
+            <td>Alinhamento em uma direção</td>
+            <td>Flexbox</td>
+            <td>Menus de navegação</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>🔍 Propriedades Essenciais</h3>
+      <div class="dica">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+          <div>
+            <strong>Container:</strong>
+            <ul>
+              <li>grid-template-columns/rows</li>
+              <li>grid-template-areas</li>
+              <li>gap</li>
+              <li>align-content</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Itens:</strong>
+            <ul>
+              <li>grid-column/grid-row</li>
+              <li>grid-area</li>
+              <li>justify-self</li>
+              <li>align-self</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>🚫 Erros Comuns</h3>
+      <div class="dica">
+        <ul>
+          <li>Confundir fr com porcentagens</li>
+          <li>Esquecer de definir o container como grid</li>
+          <li>Usar margens em vez de gap para espaçamento</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function aplicaEstiloGrid(containerId, propriedade, valor, descricao) {
+        const container = document.getElementById(containerId);
+        const descElement = document.getElementById(`desc-${containerId}`);
+
+        // Converter valores string para notação correta
+        if (propriedade === 'gridTemplateAreas') {
+          valor = valor.replace(/'/g, '"');
+        }
+
+        container.style[propriedade] = valor;
+
+        if (descricao) {
+          descElement.innerHTML = `
+                    <strong>${propriedade}: ${valor}</strong><br>
+                    ${descricao}
+                `;
+        }
+      }
+    </script>
+  </body>
+</html>

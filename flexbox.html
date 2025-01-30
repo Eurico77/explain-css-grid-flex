@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flexbox Master - Guia Completo</title>
+    <style>
+      :root {
+        --cor-primaria: #2c3e50;
+        --cor-secundaria: #3498db;
+        --cor-destaque: #e74c3c;
+        --fundo-claro: #f8f9fa;
+        --sombra: 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      .secao {
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--sombra);
+        padding: 25px;
+        margin: 30px 0;
+        border-left: 4px solid var(--cor-secundaria);
+      }
+
+      .container {
+        border: 2px dashed var(--cor-primaria);
+        background: var(--fundo-claro);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        min-height: 180px;
+        display: flex;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .item {
+        background: linear-gradient(145deg, var(--cor-secundaria), #2980b9);
+        color: white;
+        padding: 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        box-shadow: var(--sombra);
+        min-width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .controles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin: 25px 0;
+      }
+
+      button {
+        background: var(--cor-primaria);
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--sombra);
+      }
+
+      .descricao {
+        background: var(--fundo-claro);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        position: relative;
+      }
+
+      .guia-final {
+        background: linear-gradient(to right, var(--fundo-claro), white);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 50px;
+        border: 2px solid var(--cor-secundaria);
+      }
+
+      .dica {
+        background: #e8f4fc;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="grid.html">Grid</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Flexbox Master - Guia Completo</h1>
+    <p>Guia completo de Flexbox com exemplos práticos.</p>
+
+    <!-- Exemplo 1: justify-content -->
+    <div class="secao">
+      <h2>1. justify-content ↔️</h2>
+      <div class="dica">
+        Controla o alinhamento no eixo principal (horizontal por padrão).<br />
+        <strong>Valores-chave:</strong> flex-start | center | flex-end |
+        space-between | space-around | space-evenly
+      </div>
+
+      <div class="container" id="ex1">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+
+      <div class="controles">
+        <button
+          onclick="aplicaEstilo('ex1', 'justifyContent', 'flex-start', 'Alinhamento inicial no início do container')"
+        >
+          flex-start
+        </button>
+        <button
+          onclick="aplicaEstilo('ex1', 'justifyContent', 'center', 'Centraliza os itens ao longo do eixo principal')"
+        >
+          center
+        </button>
+        <button
+          onclick="aplicaEstilo('ex1', 'justifyContent', 'flex-end', 'Alinha os itens no final do container')"
+        >
+          flex-end
+        </button>
+        <button
+          onclick="aplicaEstilo('ex1', 'justifyContent', 'space-between', 'Distribui espaço igualmente entre os itens')"
+        >
+          space-between
+        </button>
+        <button
+          onclick="aplicaEstilo('ex1', 'justifyContent', 'space-around', 'Distribui espaço com margens iguais ao redor')"
+        >
+          space-around
+        </button>
+        <button
+          onclick="aplicaEstilo('ex1', 'justifyContent', 'space-evenly', 'Distribui espaço uniformemente')"
+        >
+          space-evenly
+        </button>
+      </div>
+
+      <div id="desc-ex1" class="descricao">
+        Clique nos botões para ver diferentes comportamentos
+      </div>
+    </div>
+
+    <!-- Exemplo 2: align-items -->
+    <div class="secao">
+      <h2>2. align-items ↕️</h2>
+      <div class="dica">
+        Controla o alinhamento no eixo cruzado (vertical por padrão).<br />
+        <strong>Dica:</strong> Funciona melhor com altura definida no container
+      </div>
+
+      <div class="container" id="ex2" style="height: 200px">
+        <div class="item" style="height: 40px">1</div>
+        <div class="item" style="height: 80px">2</div>
+        <div class="item" style="height: 120px">3</div>
+      </div>
+
+      <div class="controles">
+        <button
+          onclick="aplicaEstilo('ex2', 'alignItems', 'stretch', 'Itens esticados para preencher a altura')"
+        >
+          stretch
+        </button>
+        <button
+          onclick="aplicaEstilo('ex2', 'alignItems', 'flex-start', 'Alinha itens no topo do container')"
+        >
+          flex-start
+        </button>
+        <button
+          onclick="aplicaEstilo('ex2', 'alignItems', 'flex-end', 'Alinha itens na base do container')"
+        >
+          flex-end
+        </button>
+        <button
+          onclick="aplicaEstilo('ex2', 'alignItems', 'center', 'Centraliza verticalmente os itens')"
+        >
+          center
+        </button>
+        <button
+          onclick="aplicaEstilo('ex2', 'alignItems', 'baseline', 'Alinha pela linha base do texto')"
+        >
+          baseline
+        </button>
+      </div>
+
+      <div id="desc-ex2" class="descricao">
+        Experimente com diferentes alturas de itens
+      </div>
+    </div>
+
+    <!-- Exemplo 3: flex-wrap + align-content -->
+    <div class="secao">
+      <h2>3. flex-wrap + align-content 🔄</h2>
+      <div class="dica">
+        <strong>Combo essencial:</strong> flex-wrap permite quebra de linha +
+        align-content alinha múltiplas linhas
+      </div>
+
+      <div class="dica">
+        <strong>Por que align-content só funciona com wrap?</strong><br />
+        O align-content controla o espaço entre múltiplas linhas. Sem flex-wrap:
+        wrap, todos os itens ficam em uma única linha, tornando o align-content
+        inefetivo.<br />
+        👉 <em>Dica:</em> Sempre ative flex-wrap para trabalhar com múltiplas
+        linhas!
+      </div>
+
+      <div class="container" id="ex3" style="width: 500px; flex-wrap: nowrap">
+        <div class="item" style="min-width: 150px">1</div>
+        <div class="item" style="min-width: 150px">2</div>
+        <div class="item" style="min-width: 150px">3</div>
+        <div class="item" style="min-width: 150px">4</div>
+      </div>
+
+      <div class="controles">
+        <button
+          onclick="aplicaEstilo('ex3', 'flexWrap', 'wrap', 'Permite que os itens quebrem para novas linhas')"
+        >
+          wrap
+        </button>
+        <button
+          onclick="aplicaEstilo('ex3', 'alignContent', 'flex-start', 'Agrupa linhas no início do container')"
+        >
+          align-content: start
+        </button>
+        <button
+          onclick="aplicaEstilo('ex3', 'alignContent', 'flex-end', 'Agrupa linhas no final do container')"
+        >
+          align-content: end
+        </button>
+        <button
+          onclick="aplicaEstilo('ex3', 'alignContent', 'center', 'Centraliza o bloco de linhas')"
+        >
+          align-content: center
+        </button>
+        <button
+          onclick="aplicaEstilo('ex3', 'alignContent', 'space-between', 'Distribui espaço entre as linhas')"
+        >
+          align-content: space-between
+        </button>
+        <button
+          onclick="aplicaEstilo('ex3', 'alignContent', 'space-around', 'Distribui espaço ao redor das linhas')"
+        >
+          align-content: space-around
+        </button>
+        <button
+          onclick="aplicaEstilo('ex3', 'alignContent', 'stretch', 'Linhas esticadas para preencher o espaço')"
+        >
+          align-content: stretch
+        </button>
+      </div>
+
+      <div id="desc-ex3" class="descricao">
+        Primeiro ative o wrap para ver o align-content funcionar
+      </div>
+    </div>
+
+    <div class="guia-final">
+      <h2>📘 Flexbox para Iniciantes: Entenda de Verdade!</h2>
+
+      <div class="dica">
+        <strong>Conceito Fundamental:</strong><br />
+        Flexbox é um modelo de layout unidimensional para disposição de itens em
+        linhas ou colunas.
+        <ul>
+          <li>
+            <strong>Eixo Principal (main axis):</strong>
+            Direção primária definida por <code>flex-direction</code>
+            <ul>
+              <li>
+                Valores: row (padrão), row-reverse, column, column-reverse
+              </li>
+              <li>
+                Exemplo: <code>flex-direction: row</code> → Itens da esquerda
+                para direita
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Eixo Cruzado (cross axis):</strong>
+            Direção perpendicular ao eixo principal
+            <ul>
+              <li>Em <code>flex-direction: row</code> → Direção vertical</li>
+              <li>
+                Em <code>flex-direction: column</code> → Direção horizontal
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="dica" style="margin-top: 10px">
+          <strong>👉 Dica Visual:</strong> Imagine o eixo principal como a
+          direção do texto em um parágrafo, e o eixo cruzado como a direção de
+          quebra de linha.
+        </div>
+      </div>
+
+      <h3>🛠️ Quando usar cada propriedade:</h3>
+      <div class="dica">
+        <table>
+          <tr>
+            <th>Problema</th>
+            <th>Solução</th>
+            <th>Exemplo Prático</th>
+          </tr>
+          <tr>
+            <td>Distribuir espaço horizontalmente</td>
+            <td><code>justify-content</code></td>
+            <td>Barra de navegação com links igualmente espaçados</td>
+          </tr>
+          <tr>
+            <td>Centralizar verticalmente um card</td>
+            <td><code>align-items: center</code></td>
+            <td>Card de login centralizado na vertical</td>
+          </tr>
+          <tr>
+            <td>Layout responsivo de galeria</td>
+            <td><code>flex-wrap: wrap + align-content</code></td>
+            <td>
+              Galeria de imagens que se ajusta a diferentes tamanhos de tela
+            </td>
+          </tr>
+          <tr>
+            <td>Inverter ordem dos elementos</td>
+            <td><code>flex-direction: row-reverse</code></td>
+            <td>Menu com ícone à direita em mobile</td>
+          </tr>
+        </table>
+
+        <div class="dica" style="margin-top: 15px">
+          <strong>Fluxo Recomendado:</strong><br />
+          1. Definir direção (flex-direction)<br />
+          2. Controlar quebra (flex-wrap)<br />
+          3. Alinhar no eixo principal (justify-content)<br />
+          4. Alinhar no eixo cruzado (align-items/align-content)
+        </div>
+      </div>
+
+      <h3>🔍 align-items vs align-content: Diferenças Cruciais</h3>
+      <div class="dica">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+          "
+        >
+          <div>
+            <strong>align-items</strong>
+            <ul>
+              <li>Atua em <u>linha única</u></li>
+              <li>Alinha itens individualmente</li>
+              <li>
+                Valores: stretch | flex-start | flex-end | center | baseline
+              </li>
+              <li>Exemplo: Centralizar verticalmente itens em uma navbar</li>
+            </ul>
+          </div>
+          <div>
+            <strong>align-content</strong>
+            <ul>
+              <li>Exige <code>flex-wrap: wrap</code></li>
+              <li>Distribui linhas múltiplas</li>
+              <li>
+                Valores: flex-start | flex-end | center | space-between |
+                space-around | stretch
+              </li>
+              <li>
+                Exemplo: Galeria de imagens com linhas espaçadas uniformemente
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dica" style="background: #f0f8ff">
+          <strong>Teste Prático:</strong> Tente alternar entre
+          <code>align-items</code> e <code>align-content</code>
+          em um container com múltiplas linhas. Observe como o primeiro afeta os
+          itens individualmente, enquanto o segundo controla o espaço entre as
+          linhas.
+        </div>
+      </div>
+
+      <h3>❓ Por que justify-items não funciona no Flexbox?</h3>
+      <div class="dica">
+        <p>
+          O Flexbox foi projetado com uma abordagem diferente do CSS Grid para
+          alinhamento:
+        </p>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+          "
+        >
+          <div>
+            <strong>Flexbox</strong>
+            <ul>
+              <li>Controle principal via <code>justify-content</code></li>
+              <li>Alinhamento individual com <code>margin: auto</code></li>
+              <li>Exemplo: <code>.item { margin-left: auto }</code></li>
+            </ul>
+          </div>
+          <div>
+            <strong>Grid</strong>
+            <ul>
+              <li>Controle fino com <code>justify-items</code></li>
+              <li>Alinhamento por célula</li>
+              <li>Exemplo: <code>justify-items: center</code></li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          <strong>Solução Flexbox:</strong> Para alinhar um item específico, use
+          margens automáticas:<br />
+          <code>.item-especial { margin-left: auto; }</code>
+        </p>
+      </div>
+
+      <h3>🚫 Erros Comuns e Soluções</h3>
+      <div class="dica">
+        <table>
+          <tr>
+            <th>Erro</th>
+            <th>Por Que Ocorre</th>
+            <th>Solução</th>
+          </tr>
+          <tr>
+            <td>align-content não funciona</td>
+            <td>flex-wrap não está como wrap</td>
+            <td>Adicione <code>flex-wrap: wrap</code> ao container</td>
+          </tr>
+          <tr>
+            <td>Itens não alinham verticalmente</td>
+            <td>Altura não definida no container</td>
+            <td>
+              Defina <code>height</code> ou <code>min-height</code> explícito
+            </td>
+          </tr>
+          <tr>
+            <td>Espaçamento irregular</td>
+            <td>Uso incorreto de space-between/around</td>
+            <td>
+              Use <code>gap</code> para espaçamento consistente entre itens
+            </td>
+          </tr>
+          <tr>
+            <td>Ordenação inesperada</td>
+            <td>Valores order não gerenciados</td>
+            <td>Evite usar <code>order</code> para layout crítico</td>
+          </tr>
+        </table>
+
+        <div class="dica" style="margin-top: 15px; background: #fff3f3">
+          <strong>Debugging Tip:</strong> Sempre inspecione elementos com
+          DevTools:
+          <ul>
+            <li>Verifique se o container tem <code>display: flex</code></li>
+            <li>Confira a direção do eixo principal</li>
+            <li>Teste valores temporariamente no navegador</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function aplicaEstilo(containerId, propriedade, valor, descricao) {
+        const container = document.getElementById(containerId);
+        const descElement = document.getElementById(`desc-${containerId}`);
+
+        // Validação para align-content
+        if (
+          propriedade === 'alignContent' &&
+          container.style.flexWrap !== 'wrap'
+        ) {
+          alert('⚠️ Ative primeiro o flex-wrap: wrap!');
+          return;
+        }
+
+        // Aplica o estilo
+        container.style[propriedade] = valor;
+
+        // Atualiza descrição
+        if (descricao) {
+          descElement.innerHTML = `
+                <strong>${propriedade
+                  .replace(/([A-Z])/g, ' $1')
+                  .toUpperCase()}: ${valor}</strong><br>
+                ${descricao}
+            `;
+        }
+
+        // Reset para combinações inválidas
+        if (propriedade === 'flexWrap' && valor === 'nowrap') {
+          container.style.alignContent = 'stretch';
+        }
+      }
+    </script>
+  </body>
+</html>
