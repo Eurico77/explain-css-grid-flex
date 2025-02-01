@@ -1,77 +1,89 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Corpo da página */
 body {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 40px 20px;
+  background: #f4f7fc;
+  color: #333;
+}
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 4.5rem;
+  font-size: 4rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
 }
 
+/* Parágrafo */
 p {
-  margin-bottom: 15px;
-  line-height: 1.5;
-  text-align: center;
   font-size: 1.5rem;
-
-  color: #2c3e50;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+  color: #555;
+  padding: 20px;
   background: #f8f9fa;
   border-radius: 12px;
-  padding: 25px;
-  border-left: 4px solid #27ae60;
+  border-left: 5px solid #27ae60;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
-p strong {
-  color: #2c3e50;
-}
-
+/* Link do autor */
 p a {
   text-decoration: none;
-  color: #2c3e50;
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: #f8f9fa;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #27ae60;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
 }
 
+p a:hover {
+  color: #219150;
+}
+
+/* Navegação */
 nav {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.5rem;
-  color: #2c3e50;
+  margin-top: 20px;
 }
 
 nav ul {
   list-style: none;
-  display: inline-block;
-  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: #2c3e50;
   border-radius: 12px;
-  background: #f8f9fa;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 nav li {
   display: inline-block;
-  margin-right: 10px;
 }
 
 nav a {
   text-decoration: none;
-  color: #2c3e50;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  background: #27ae60;
+  color: #fff;
 }
